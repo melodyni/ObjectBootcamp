@@ -1,17 +1,14 @@
 package math.probability;
 
 public class Chance {
-    private final int noOfCoins;
 
-    public Chance(int noOfCoins) {
-        this.noOfCoins = noOfCoins;
+    private final double probability;
+
+    public Chance(double probability) {
+        this.probability = probability;
     }
 
-    public double calcFavorableChance(int noOfFavorableEvent) {
-        return  (double) noOfFavorableEvent / (this.noOfCoins * 2);
-    }
-
-    public double calcNonFavorableChance(int noOfFavorableEvent) {
-        return 1 - this.calcFavorableChance(noOfFavorableEvent);
+    public double complement() {
+        return 1 - this.probability;
     }
 }
