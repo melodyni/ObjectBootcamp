@@ -8,7 +8,22 @@ public class ChanceTest {
 
     @Test
     public void shouldRepresentChanceOfNotGettingTailsOnFlippingACoin() {
-        Chance chance = new Chance(0.5);
-        assertEquals(0.5, chance.complement(),0);
+        Chance chanceOfGettingTails = new Chance(0.5);
+        assertEquals(new Chance(0.5) , chanceOfGettingTails.not());
+    }
+
+    @Test
+    public void shouldRepresentChanceOfGettingTwoTailsOnFlippingTwoCoins() {
+        Chance chanceOfGettingTails = new Chance(0.5);
+        Chance expected = new Chance(0.25);
+        assertEquals(expected, chanceOfGettingTails.and(chanceOfGettingTails));
+    }
+
+
+    @Test
+    public void shouldRepresentChanceOfGettingEitherHeadOrTailOnFlippingTwoCoins() {
+        Chance chanceOfGettingTails = new Chance(0.5);
+        Chance expected = new Chance(0.75);
+        assertEquals(expected, chanceOfGettingTails.or(chanceOfGettingTails));
     }
 }
