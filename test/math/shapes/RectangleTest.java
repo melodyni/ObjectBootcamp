@@ -30,23 +30,23 @@ public class RectangleTest {
         assertEquals(12.4, rectangle.perimeter(), 0);
     }
 
-    @Test
-    public void shouldThrowExceptionForInvalidBreadth(){
-        assertThrows(InvalidDimensionException.class, ()-> Rectangle.create(2, -3));
-    }
-
-    @Test
-    public void shouldThrowExceptionForInvalidLength(){
-        assertThrows(InvalidDimensionException.class, ()-> Rectangle.create(-2, 3));
-    }
-
-    @Test
-    public void shouldThrowExceptionForInvalidDimensions(){
-        assertThrows(InvalidDimensionException.class, ()-> Rectangle.create(-2, -3));
-    }
-
-    @Test
-    public void shouldThrowExceptionForZeroAsDimension(){
-        assertThrows(InvalidDimensionException.class, ()-> Rectangle.create(-2, -3));
-    }
+//    @Test
+//    public void shouldThrowExceptionForInvalidBreadth(){
+//        assertThrows(InvalidDimensionException.class, ()-> Rectangle.create(2, -3));
+//    }
+//
+//    @Test
+//    public void shouldThrowExceptionForInvalidLength(){
+//        assertThrows(InvalidDimensionException.class, ()-> Rectangle.create(-2, 3));
+//    }
+//
+//    @Test
+//    public void shouldThrowExceptionForInvalidDimensions(){
+//        assertThrows(InvalidDimensionException.class, ()-> Rectangle.create(-2, -3));
+//    }
+//
+//    @Test
+//    public void shouldThrowExceptionForZeroAsDimension(){
+//        assertThrows(InvalidDimensionException.class, ()-> Rectangle.create(-2, -3));
+//    }
 }
