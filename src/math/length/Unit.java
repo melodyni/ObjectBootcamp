@@ -2,7 +2,7 @@ package math.length;
 
 public enum Unit {
     FEET(12),
-    CENTIMETER(2.5),
+    CENTIMETER(0.4),
     INCH(1);
     
     private final double base;
