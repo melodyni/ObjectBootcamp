@@ -1,22 +1,21 @@
 package math.length;
 
 public class Length {
-    private int value;
-    private Unit unit;
+    private final int value;
+    private final Unit unit;
     
     public Length(int value, Unit unit) {
         this.value = value;
         this.unit = unit;
     }
-    
-    public int compare(Length other) {
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (!(other instanceof Length)) return false;
+        Length otherLength = (Length) other;
         final double thisInInch = this.unit.convertToBase(this.value);
-        final double otherInInch = other.unit.convertToBase(other.value);
-        if (thisInInch > otherInInch) {
-            return 1;
-        } else if (thisInInch < otherInInch) {
-            return -1;
-        }
-        return 0;
+        final double otherInInch = otherLength.unit.convertToBase(otherLength.value);
+        return thisInInch == otherInInch;
     }
 }
