@@ -1,9 +1,10 @@
 package math.length;
 
 public enum Unit {
-    FEET(12),
-    CENTIMETER(0.4),
-    INCH(1);
+    FEET(300),
+    CENTIMETER(10),
+    INCH(25),
+    MILLIMETER(1);
 
     private final double base;
 
@@ -11,7 +12,7 @@ public enum Unit {
         this.base = base;
     }
 
-    public double convertToBase(int value) {
+    public double convertToBase(double value) {
         return value * this.base;
     }
 }
