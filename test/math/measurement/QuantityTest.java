@@ -2,62 +2,60 @@ package math.measurement;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 public class QuantityTest {
 
     @Test
-    public void shouldCompareTwoLengthsOfSameUnitAndSameValue() {
+    public void shouldCompareTwoLengthsOfSameUnitAndSameValueAsEqual() {
         Quantity twoFeet = new Quantity(2, Unit.FEET);
-        assertEquals(twoFeet, twoFeet);
+        assertTrue(twoFeet.equivalentTo(twoFeet));
     }
 
     @Test
-    public void shouldCompareTwoLengthsOfSameUnit() {
+    public void shouldCompareTwoLengthsOfDifferentValueAndSameUnitAsNotEqual() {
         Quantity twoFeet = new Quantity(2, Unit.FEET);
         Quantity threeFeet = new Quantity(3, Unit.FEET);
-        assertNotEquals(twoFeet, threeFeet);
+        assertFalse(twoFeet.equivalentTo(threeFeet));
     }
 
     @Test
-    public void shouldCompareTwoEqualLengthsOfUnitFeetAndInch() {
-        Quantity oneFeet = new Quantity(1, Unit.FEET);
-        Quantity twelveInch = new Quantity(12, Unit.INCH);
-        assertEquals(oneFeet, twelveInch);
+    public void shouldCompareTwoEqualLengthsOfUnitFeetAndInchAsEqual() {
+        Quantity oneFoot = new Quantity(1, Unit.FEET);
+        Quantity twelveInches = new Quantity(12, Unit.INCH);
+        assertTrue(oneFoot.equivalentTo(twelveInches));
     }
 
-
     @Test
-    public void shouldCompareTwoUnequalLengthOfUnitInchAndCentimeter() {
+    public void shouldCompareTwoUnequalLengthOfUnitInchAndCentimeterAsNotEqual() {
         Quantity fourCM = new Quantity(4, Unit.CENTIMETER);
-        Quantity twoInch = new Quantity(2, Unit.INCH);
-        assertNotEquals(twoInch, fourCM);
+        Quantity twoInches = new Quantity(2, Unit.INCH);
+        assertFalse(twoInches.equivalentTo(fourCM));
     }
 
     @Test
-    public void shouldCompareTwoUnequalLengthsOfUnitFeetAndInch() {
+    public void shouldCompareTwoUnequalLengthsOfUnitFeetAndInchAsNotEqual() {
         Quantity twoFeet = new Quantity(2, Unit.FEET);
-        Quantity twelveInch = new Quantity(12, Unit.INCH);
-        assertNotEquals(twoFeet, twelveInch);
+        Quantity twelveInches = new Quantity(12, Unit.INCH);
+        assertFalse(twoFeet.equivalentTo(twelveInches));
     }
 
     @Test
-    public void shouldCompareTwoEqualLengthOfMillimeterAndCM() {
-        Quantity tenMillimeter = new Quantity(10, Unit.MILLIMETER);
+    public void shouldCompareTwoEqualLengthOfMillimeterAndCMAsEqual() {
+        Quantity tenMillimeters = new Quantity(10, Unit.MILLIMETER);
         Quantity oneCentimeter = new Quantity(1, Unit.CENTIMETER);
-        assertEquals(tenMillimeter, oneCentimeter);
+        assertTrue(tenMillimeters.equivalentTo(oneCentimeter));
     }
 
     @Test
-    public void shouldCompareTwoUnequalLengthOfMillimeterAndCM() {
-        Quantity tenMillimeter = new Quantity(11, Unit.MILLIMETER);
+    public void shouldCompareTwoUnequalLengthOfMillimeterAndCMAsNotEqual() {
+        Quantity tenMillimeters = new Quantity(11, Unit.MILLIMETER);
         Quantity oneCentimeter = new Quantity(1, Unit.CENTIMETER);
-        assertNotEquals(tenMillimeter, oneCentimeter);
+        assertFalse(tenMillimeters.equivalentTo(oneCentimeter));
     }
 
     @Test
-    public void shouldAddTwoLengthInInches() {
+    public void shouldAddTwoLengthsOfUnitInch() {
         Quantity twoInch = new Quantity(2, Unit.INCH);
         Quantity expected = new Quantity(4, Unit.INCH);
         assertEquals(expected, twoInch.add(twoInch));
@@ -65,36 +63,32 @@ public class QuantityTest {
 
 
     @Test
-    public void shouldAddTwoLengthOfInchAndCentimeter() {
+    public void shouldAddTwoLengthsOfInchAndCentimeter() {
         Quantity twoInch = new Quantity(2, Unit.INCH);
         Quantity twoPointFiveCM = new Quantity(2.5, Unit.CENTIMETER);
-        assertEquals(new Quantity(3, Unit.INCH), twoInch.add(twoPointFiveCM));
+        Quantity expected = new Quantity(3, Unit.INCH);
+        assertEquals(expected, twoInch.add(twoPointFiveCM));
     }
 
     @Test
-    public void shouldCompareVolumeOfSameUnitToEquals() {
+    public void shouldCompareVolumesOfSameUnitAsEqual() {
         final Quantity oneLiter = new Quantity(1, Unit.LITER);
         assertEquals(oneLiter, oneLiter);
     }
 
     @Test
-    public void shouldCompareTwoEqualQuantityOfGallonAndLiter() {
-        final Quantity oneLitter = new Quantity(3.78, Unit.LITER);
+    public void shouldCompareTwoEquivalentVolumesOfGallonAndLiterAsEqual() {
+        final Quantity oneLiter = new Quantity(3.78, Unit.LITER);
         final Quantity oneGallon = new Quantity(1, Unit.GALLON);
-        assertEquals(oneGallon, oneLitter);
+        assertTrue(oneGallon.equivalentTo(oneLiter));
     }
 
     @Test
     public void shouldAddTwoQuantityOfLiterAndGallonToLiter() {
         final Quantity oneLiter = new Quantity(1, Unit.LITER);
         final Quantity oneGallon = new Quantity(1, Unit.GALLON);
-        assertEquals(new Quantity(4.78, Unit.LITER),oneGallon.add(oneLiter));
-    }
-
-    @Test
-    public void shouldNotCompareVolumeAndLengthUnits() {
-        Quantity oneLiter = new Quantity(1, Unit.LITER);
-        Quantity oneMM = new Quantity(1, Unit.MILLIMETER);
-        assertNotEquals(oneLiter,oneMM);
+        Quantity expected = new Quantity(4.78, Unit.LITER);
+        Quantity actual = oneLiter.add(oneGallon);
+        assertEquals(expected, actual);
     }
 }
