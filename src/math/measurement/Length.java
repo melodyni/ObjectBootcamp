@@ -3,7 +3,7 @@ package math.length;
 public class Quantity {
     private final double value;
     private final Unit unit;
-
+    
     public Quantity(double value, Unit unit) {
         this.value = value;
         this.unit = unit;
