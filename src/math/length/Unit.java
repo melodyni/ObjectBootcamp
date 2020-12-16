@@ -15,4 +15,9 @@ public enum Unit {
     public double convertToBase(double value) {
         return value * this.base;
     }
+
+    public double convertTo(double value, Unit unit) {
+        double base = this.base / unit.base;
+        return value * base;
+    }
 }

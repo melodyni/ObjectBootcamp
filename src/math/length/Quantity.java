@@ -19,10 +19,9 @@ public class Quantity {
         return thisInBase == otherInBase;
     }
 
-
     public Quantity add(Quantity quantity) {
-        final double thisInBase = this.unit.convertToBase(this.value);
-        final double otherInBase = quantity.unit.convertToBase(quantity.value);
+        final double thisInBase = this.unit.convertTo(this.value, this.unit);
+        final double otherInBase = quantity.unit.convertTo(quantity.value, this.unit);
         double sum = thisInBase + otherInBase;
         return new Quantity(sum, this.unit);
     }
