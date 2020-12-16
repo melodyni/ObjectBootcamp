@@ -20,8 +20,8 @@ public class VolumeTest {
     
     @Test
     public void shouldAddTwoVolumesOfLiterAndGallonToLiter() {
-        final Volume oneLitter = new Volume(1, VolumeUnit.LITER);
+        final Volume oneLiter = new Volume(1, VolumeUnit.LITER);
         final Volume oneGallon = new Volume(1, VolumeUnit.GALLON);
-        assertEquals(new,oneGallon.add(oneLitter));
+        assertEquals(new Volume(4.78, VolumeUnit.LITER),oneGallon.add(oneLiter));
     }
 }

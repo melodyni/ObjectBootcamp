@@ -62,4 +62,12 @@ public class LengthTest {
         Length expected = new Length(4, LengthUnit.INCH);
         assertEquals(expected, twoInch.add(twoInch));
     }
+
+
+    @Test
+    public void shouldAddTwoLengthOfInchAndCentimeter() {
+        Length twoInch = new Length(2, LengthUnit.INCH);
+        Length twoPointFiveCM = new Length(2.5, LengthUnit.CENTIMETER);
+        assertEquals(new Length(3, LengthUnit.INCH), twoInch.add(twoPointFiveCM));
+    }
 }
