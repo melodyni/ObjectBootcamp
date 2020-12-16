@@ -14,6 +14,7 @@ public class Quantity {
         if (this == other) return true;
         if (!(other instanceof Quantity)) return false;
         Quantity otherQuantity = (Quantity) other;
+        if(oth)
         final double thisInBase = this.unit.convertToBase(this.value);
         final double otherInBase = otherQuantity.unit.convertToBase(otherQuantity.value);
         return thisInBase == otherInBase;
