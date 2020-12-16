@@ -70,4 +70,25 @@ public class QuantityTest {
         assertEquals(expected, twoInch.add(twoPointFiveCM));
     }
 
+    @Test
+    public void shouldCompareVolumesOfSameUnitAsEqual() {
+        final Quantity oneLiter = new Quantity(1, VolumeUnit.LITER);
+        assertEquals(oneLiter, oneLiter);
+    }
+
+    @Test
+    public void shouldCompareTwoEquivalentVolumesOfGallonAndLiterAsEqual() {
+        final Quantity oneLiter = new Quantity(3.78, VolumeUnit.LITER);
+        final Quantity oneGallon = new Quantity(1, VolumeUnit.GALLON);
+        assertTrue(oneGallon.equivalentTo(oneLiter));
+    }
+
+    @Test
+    public void shouldAddTwoQuantityOfLiterAndGallonToLiter() {
+        final Quantity oneLiter = new Quantity(1, VolumeUnit.LITER);
+        final Quantity oneGallon = new Quantity(1, VolumeUnit.GALLON);
+        Quantity expected = new Quantity(4.78, VolumeUnit.LITER);
+        Quantity actual = oneLiter.add(oneGallon);
+        assertEquals(expected, actual);
+    }
 }
