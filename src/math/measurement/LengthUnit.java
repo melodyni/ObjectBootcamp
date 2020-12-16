@@ -1,6 +1,6 @@
-package math.length;
+package math.measurement;
 
-public enum Unit {
+public enum LengthUnit {
     FEET(300),
     CENTIMETER(10),
     INCH(25),
@@ -8,7 +8,7 @@ public enum Unit {
 
     private final double base;
 
-    Unit(double base) {
+    LengthUnit(double base) {
         this.base = base;
     }
 
@@ -16,8 +16,8 @@ public enum Unit {
         return value * this.base;
     }
 
-    public double convertTo(double value, Unit unit) {
-        double base = this.base / unit.base;
+    public double convertTo(double value, LengthUnit lengthUnit) {
+        double base = this.base / lengthUnit.base;
         return value * base;
     }
 }

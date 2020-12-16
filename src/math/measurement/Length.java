@@ -1,28 +1,28 @@
-package math.length;
+package math.measurement;
 
-public class Quantity {
+public class Length {
     private final double value;
-    private final Unit unit;
+    private final LengthUnit lengthUnit;
     
-    public Quantity(double value, Unit unit) {
+    public Length(double value, LengthUnit lengthUnit) {
         this.value = value;
-        this.unit = unit;
+        this.lengthUnit = lengthUnit;
     }
 
     @Override
     public boolean equals(Object other) {
         if (this == other) return true;
-        if (!(other instanceof Quantity)) return false;
-        Quantity otherQuantity = (Quantity) other;
-        final double thisInBase = this.unit.convertToBase(this.value);
-        final double otherInBase = otherQuantity.unit.convertToBase(otherQuantity.value);
+        if (!(other instanceof Length)) return false;
+        Length otherLength = (Length) other;
+        final double thisInBase = this.lengthUnit.convertToBase(this.value);
+        final double otherInBase = otherLength.lengthUnit.convertToBase(otherLength.value);
         return thisInBase == otherInBase;
     }
 
-    public Quantity add(Quantity quantity) {
-        final double thisInBase = this.unit.convertTo(this.value, this.unit);
-        final double otherInBase = quantity.unit.convertTo(quantity.value, this.unit);
+    public Length add(Length length) {
+        final double thisInBase = this.lengthUnit.convertTo(this.value, this.lengthUnit);
+        final double otherInBase = length.lengthUnit.convertTo(length.value, this.lengthUnit);
         double sum = thisInBase + otherInBase;
-        return new Quantity(sum, this.unit);
+        return new Length(sum, this.lengthUnit);
     }
 }
