@@ -2,7 +2,8 @@ package math.measurement;
 
 import java.util.Objects;
 
-public class Quantity<U extends Unit> {
+public class
+Quantity<U extends Unit> {
     private final double value;
     private final U unit;
 
@@ -19,11 +20,11 @@ public class Quantity<U extends Unit> {
         return this.unit.convertToBase(this.value);
     }
 
-    public Quantity<U> add(Quantity<U> quantity) {
-        final double thisInBase = this.unit.convertToStandard(this.value);
-        final double otherInBase = quantity.unit.convertToStandard(quantity.value);
+    public Quantity<U> add(Quantity<U> quantity, U standardUnit) {
+        final double thisInBase = this.toBaseValue();
+        final double otherInBase = quantity.toBaseValue();
         double sum = this.round(thisInBase, otherInBase);
-        return new Quantity<>(sum, this.unit);
+        return new Quantity<>(standardUnit.toSelf(sum), standardUnit);
     }
 
     private double round(double thisInBase, double otherInBase) {

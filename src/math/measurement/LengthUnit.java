@@ -11,15 +11,13 @@ public enum LengthUnit implements Unit {
     }
 
     private final double base;
-    private static final LengthUnit standardUnit = INCH;
 
     @Override
     public double convertToBase(double value) {
         return value * this.base;
     }
 
-    @Override
-    public double convertToStandard(double value) {
-        return value * this.base / standardUnit.base;
+    public double toSelf(double value) {
+        return value / this.base;
     }
 }

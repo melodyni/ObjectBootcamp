@@ -58,7 +58,7 @@ public class QuantityTest {
     public void shouldAddTwoLengthsOfUnitInch() {
         Quantity<LengthUnit> twoInch = new Quantity<>(2, LengthUnit.INCH);
         Quantity<LengthUnit> expected = new Quantity<>(4, LengthUnit.INCH);
-        assertEquals(expected, twoInch.add(twoInch));
+        assertEquals(expected, twoInch.add(twoInch, LengthUnit.INCH));
     }
 
 
@@ -67,7 +67,15 @@ public class QuantityTest {
         Quantity<LengthUnit> twoInch = new Quantity<>(2, LengthUnit.INCH);
         Quantity<LengthUnit> twoPointFiveCM = new Quantity<>(2.5, LengthUnit.CENTIMETER);
         Quantity<LengthUnit> expected = new Quantity<>(3, LengthUnit.INCH);
-        assertEquals(expected, twoInch.add(twoPointFiveCM));
+        assertEquals(expected, twoInch.add(twoPointFiveCM, LengthUnit.INCH));
+    }
+
+    @Test
+    public void shouldAddTwoLengthsOfMillimeterAndCentimeter() {
+        Quantity<LengthUnit> twentyFiveMillimeter = new Quantity<>(25, LengthUnit.MILLIMETER);
+        Quantity<LengthUnit> twoPointFiveCM = new Quantity<>(2.5, LengthUnit.CENTIMETER);
+        Quantity<LengthUnit> expected = new Quantity<>(2, LengthUnit.INCH);
+        assertEquals(expected, twentyFiveMillimeter.add(twoPointFiveCM, LengthUnit.INCH));
     }
 
     @Test
@@ -88,7 +96,7 @@ public class QuantityTest {
         final Quantity<VolumeUnit> oneLiter = new Quantity<>(1, VolumeUnit.LITER);
         final Quantity<VolumeUnit> oneGallon = new Quantity<>(1, VolumeUnit.GALLON);
         Quantity<VolumeUnit> expected = new Quantity<>(4.78, VolumeUnit.LITER);
-        Quantity<VolumeUnit> actual = oneLiter.add(oneGallon);
+        Quantity<VolumeUnit> actual = oneLiter.add(oneGallon, VolumeUnit.LITER);
         assertEquals(expected, actual);
     }
 }

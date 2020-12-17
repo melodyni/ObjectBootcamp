@@ -4,7 +4,6 @@ public enum VolumeUnit implements Unit {
     LITER(1), GALLON(3.78);
 
     private final double base;
-    private static final VolumeUnit standardUnit = LITER;
 
     VolumeUnit(double base) {
         this.base = base;
@@ -16,7 +15,7 @@ public enum VolumeUnit implements Unit {
     }
 
     @Override
-    public double convertToStandard(double value) {
-        return value * this.base / standardUnit.base;
+    public double toSelf(double value) {
+        return value / this.base;
     }
 }
