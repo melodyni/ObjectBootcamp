@@ -20,8 +20,8 @@ public class Quantity<U extends Unit> {
     }
 
     public Quantity<U> add(Quantity<U> quantity) {
-        final double thisInBase = this.unit.convertTo(this.value, this.unit);
-        final double otherInBase = quantity.unit.convertTo(quantity.value, this.unit);
+        final double thisInBase = this.unit.convertToStandard(this.value);
+        final double otherInBase = quantity.unit.convertToStandard(quantity.value);
         double sum = this.round(thisInBase, otherInBase);
         return new Quantity<>(sum, this.unit);
     }

@@ -91,5 +91,4 @@ public class QuantityTest {
         Quantity<VolumeUnit> actual = oneLiter.add(oneGallon);
         assertEquals(expected, actual);
     }
-
 }
