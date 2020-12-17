@@ -2,8 +2,7 @@ package math.measurement;
 
 import java.util.Objects;
 
-public class
-Quantity<U extends Unit> {
+public class Quantity<U extends Unit> {
     private final double value;
     private final U unit;
 
@@ -17,7 +16,7 @@ Quantity<U extends Unit> {
     }
 
     private double toBaseValue() {
-        return this.unit.convertToBase(this.value);
+        return this.unit.toBase(this.value);
     }
 
     public Quantity<U> add(Quantity<U> quantity, U standardUnit) {

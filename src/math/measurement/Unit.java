@@ -1,7 +1,6 @@
 package math.measurement;
 
 public interface Unit {
-    double convertToBase(double value);
-
+    double toBase(double value);
     double toSelf(double value);
 }

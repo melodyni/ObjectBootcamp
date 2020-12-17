@@ -13,7 +13,7 @@ public enum LengthUnit implements Unit {
     private final double base;
 
     @Override
-    public double convertToBase(double value) {
+    public double toBase(double value) {
         return value * this.base;
     }
 

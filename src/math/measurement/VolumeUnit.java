@@ -10,7 +10,7 @@ public enum VolumeUnit implements Unit {
     }
 
     @Override
-    public double convertToBase(double value) {
+    public double toBase(double value) {
         return value * this.base;
     }
 
