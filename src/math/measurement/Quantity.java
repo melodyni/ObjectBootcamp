@@ -5,10 +5,12 @@ import java.util.Objects;
 public class Quantity<U extends Unit> {
     private final double value;
     private final U unit;
+    private final U standardUnit;
 
-    public Quantity(double value, U unit) {
+    public Quantity(double value, U unit, U standardUnit) {
         this.value = value;
         this.unit = unit;
+        this.standardUnit = standardUnit;
     }
 
     public boolean equivalentTo(Quantity<U> other) {
@@ -19,11 +21,11 @@ public class Quantity<U extends Unit> {
         return this.unit.toBase(this.value);
     }
 
-    public Quantity<U> add(Quantity<U> quantity, U standardUnit) {
+    public Quantity<U> add(Quantity<U> quantity) {
         final double thisInBase = this.toBaseValue();
         final double otherInBase = quantity.toBaseValue();
         double sum = this.round(thisInBase, otherInBase);
-        return new Quantity<>(standardUnit.toSelf(sum), standardUnit);
+        return new Quantity<>(this.standardUnit.toSelf(sum), this.standardUnit, this.standardUnit);
     }
 
     private double round(double thisInBase, double otherInBase) {
