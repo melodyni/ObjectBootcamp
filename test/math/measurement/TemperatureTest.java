@@ -12,6 +12,7 @@ public class TemperatureTest {
                 TemperatureUnit.FAHRENHEIT);
         assertTrue(celsius.equivalentTo(fahrenheit));
     }
+
     @Test
     public void shouldCompareTwoDifferentTemperatureOfCelsiusAndFahrenheitAsNotEqual() {
         final Temperature celsius = new Temperature(10, TemperatureUnit.CELSIUS);

@@ -1,20 +1,19 @@
 package math.measurement;
 
 public enum TemperatureUnit implements Unit {
-    FAHRENHEIT(1), CELSIUS(1.8);
-    TemperatureUnit(double base) {
+    FAHRENHEIT(1, 0), CELSIUS(1.8, 32);
+
+    TemperatureUnit(double base, int constant) {
         this.base = base;
+        this.constant = constant;
     }
 
     private final double base;
+    private final int constant;
 
     @Override
     public double toBase(double value) {
-        double constant = 0;
-        if(this.base != 1){
-            constant = 32;
-        }
-        return  (value *this.base) + constant;
+        return (value * this.base) + this.constant;
     }
 
     public double toSelf(double value) {
