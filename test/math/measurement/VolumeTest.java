@@ -11,8 +11,7 @@ public class VolumeTest {
         final Volume oneLiter = new Volume(1, VolumeUnit.LITER);
         final Volume oneGallon = new Volume(1, VolumeUnit.GALLON);
         Volume expected = new Volume(4.78, VolumeUnit.LITER);
-        Volume actual = oneLiter.add(oneGallon);
-        assertEquals(expected, actual);
+        assertEquals(expected, oneLiter.add(oneGallon));
     }
 
     @Test

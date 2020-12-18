@@ -1,15 +1,19 @@
 package math.measurement;
 
-public class Volume extends Quantity<VolumeUnit> implements QuantityAddable<VolumeUnit> {
+public class Volume extends QuantityAddable<VolumeUnit> {
     public Volume(double magnitude, VolumeUnit unit) {
         super(magnitude, unit);
     }
-
+    
+    
     @Override
-    public Volume add(Quantity<VolumeUnit> quantity) {
-        final double thisInBase = this.toBaseValue();
-        final double otherInBase = quantity.toBaseValue();
-        double totalMagnitude = thisInBase + otherInBase;
-        return new Volume(VolumeUnit.LITER.toSelf(totalMagnitude),VolumeUnit.LITER);
+    protected VolumeUnit getStandardUnit() {
+        return VolumeUnit.LITER;
     }
+    
+    @Override
+    protected Volume createAddableQuantity(double magnitude, VolumeUnit unit) {
+        return new Volume(magnitude, unit);
+    }
+    
 }

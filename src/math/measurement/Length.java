@@ -1,15 +1,18 @@
 package math.measurement;
 
-public class Length extends Quantity<LengthUnit> implements QuantityAddable<LengthUnit> {
+public class Length extends QuantityAddable<LengthUnit> {
     public Length(double magnitude, LengthUnit unit) {
         super(magnitude, unit);
     }
-
+    
+    
     @Override
-    public Length add(Quantity<LengthUnit> quantity) {
-        final double thisInBase = this.toBaseValue();
-        final double otherInBase = quantity.toBaseValue();
-        double totalMagnitude = thisInBase + otherInBase;
-        return new Length(LengthUnit.INCH.toSelf(totalMagnitude),LengthUnit.INCH);
+    protected LengthUnit getStandardUnit() {
+        return LengthUnit.INCH;
+    }
+    
+    @Override
+    protected Length createAddableQuantity(double magnitude, LengthUnit unit) {
+        return new Length(magnitude, unit);
     }
 }
