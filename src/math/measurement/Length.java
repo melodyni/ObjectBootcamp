@@ -2,7 +2,7 @@ package math.measurement;
 
 import math.measurement.units.LengthUnit;
 
-public class Length extends Quantity<LengthUnit> implements QuantityAddable<LengthUnit> {
+public class Length extends Quantity<LengthUnit> implements Addable<LengthUnit> {
     public Length(double magnitude, LengthUnit unit) {
         super(magnitude, unit);
     }
