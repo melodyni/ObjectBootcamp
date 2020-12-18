@@ -3,15 +3,15 @@ package math.measurement;
 import math.measurement.units.VolumeUnit;
 
 public class Volume extends Quantity<VolumeUnit> implements Addable<VolumeUnit> {
+    final static VolumeUnit standardUnit = VolumeUnit.LITER;
+    
     public Volume(double magnitude, VolumeUnit unit) {
         super(magnitude, unit);
     }
     
     @Override
     public Volume add(Quantity<VolumeUnit> quantity) {
-        final double thisInBase = this.toBaseValue();
-        final double otherInBase = quantity.toBaseValue();
-        double totalMagnitude = thisInBase + otherInBase;
-        return new Volume(VolumeUnit.LITER.toSelf(totalMagnitude), VolumeUnit.LITER);
+        double totalMagnitude = this.toBaseValue() + quantity.toBaseValue();
+        return new Volume(standardUnit.toSelf(totalMagnitude), standardUnit);
     }
 }

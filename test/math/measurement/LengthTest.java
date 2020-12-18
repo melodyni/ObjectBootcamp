@@ -6,6 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LengthTest {
+    
     @Test
     public void shouldAddTwoLengthsOfInchAndCentimeter() {
         Length twoInch = new Length(2, LengthUnit.INCH);

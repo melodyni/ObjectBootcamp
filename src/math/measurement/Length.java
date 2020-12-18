@@ -3,15 +3,14 @@ package math.measurement;
 import math.measurement.units.LengthUnit;
 
 public class Length extends Quantity<LengthUnit> implements Addable<LengthUnit> {
+    private final static LengthUnit standardUnit = LengthUnit.INCH;
     public Length(double magnitude, LengthUnit unit) {
         super(magnitude, unit);
     }
     
     @Override
     public Length add(Quantity<LengthUnit> quantity) {
-        final double thisInBase = this.toBaseValue();
-        final double otherInBase = quantity.toBaseValue();
-        double totalMagnitude = thisInBase + otherInBase;
-        return new Length(LengthUnit.INCH.toSelf(totalMagnitude), LengthUnit.INCH);
+        double totalMagnitude = this.toBaseValue() + quantity.toBaseValue();
+        return new Length(standardUnit.toSelf(totalMagnitude), standardUnit);
     }
 }
