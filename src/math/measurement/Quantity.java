@@ -2,7 +2,7 @@ package math.measurement;
 
 import java.util.Objects;
 
-public class Quantity<U extends Unit> {
+public class Quantity<U extends Unit> implements QuantityComparable<U> {
     private final double value;
     private final U unit;
     private final U standardUnit;
