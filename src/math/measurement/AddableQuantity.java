@@ -1,11 +1,13 @@
 package math.measurement;
 
-public abstract class QuantityAddable<U extends Unit> extends Quantity<U> {
-    public QuantityAddable(double magnitude, U unit) {
+import math.measurement.units.Unit;
+
+public abstract class AddableQuantity<U extends Unit> extends Quantity<U> {
+    public AddableQuantity(double magnitude, U unit) {
         super(magnitude, unit);
     }
     
-    QuantityAddable<U> add(Quantity<U> quantity) {
+    AddableQuantity<U> add(Quantity<U> quantity) {
         final U standardUnit = this.getStandardUnit();
         double totalMagnitude = this.toBaseValue() + quantity.toBaseValue();
         return this.createAddableQuantity(standardUnit.toSelf(totalMagnitude), standardUnit);
@@ -13,5 +15,5 @@ public abstract class QuantityAddable<U extends Unit> extends Quantity<U> {
     
     protected abstract U getStandardUnit();
     
-    protected abstract QuantityAddable<U> createAddableQuantity(double magnitude, U unit);
+    protected abstract AddableQuantity<U> createAddableQuantity(double magnitude, U unit);
 }

@@ -1,6 +1,6 @@
 package math.measurement;
 
-public class Length extends QuantityAddable<LengthUnit> {
+public class Length extends AddableQuantity<LengthUnit> {
     public Length(double magnitude, LengthUnit unit) {
         super(magnitude, unit);
     }

@@ -1,6 +1,8 @@
 package math.measurement;
 
-public class Volume extends QuantityAddable<VolumeUnit> {
+import math.measurement.units.VolumeUnit;
+
+public class Volume extends AddableQuantity<VolumeUnit> {
     public Volume(double magnitude, VolumeUnit unit) {
         super(magnitude, unit);
     }
