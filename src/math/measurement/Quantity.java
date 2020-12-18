@@ -24,12 +24,12 @@ public class Quantity<U extends Unit> {
     public Quantity<U> add(Quantity<U> quantity) {
         final double thisInBase = this.toBaseValue();
         final double otherInBase = quantity.toBaseValue();
-        double sum = this.round(thisInBase, otherInBase);
+        double sum = this.round(thisInBase + otherInBase);
         return new Quantity<>(this.standardUnit.toSelf(sum), this.standardUnit, this.standardUnit);
     }
 
-    private double round(double thisInBase, double otherInBase) {
-        return Math.round((thisInBase + otherInBase) * 100) / 100.0;
+    private double round(double value ) {
+        return Math.round((value) * 100) / 100.0;
     }
 
     @Override

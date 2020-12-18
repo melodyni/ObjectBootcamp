@@ -99,4 +99,22 @@ public class QuantityTest {
         Quantity<VolumeUnit> actual = oneLiter.add(oneGallon);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldCompareTwoEquivalentTemperatureOfFahrenheitAndCelsiusAsEqual() {
+        final Quantity<TemperatureUnit> celsius = new Quantity<>(100, TemperatureUnit.CELSIUS,
+            TemperatureUnit.CELSIUS);
+        final Quantity<TemperatureUnit> fahrenheit = new Quantity<>(212, TemperatureUnit.FAHRENHEIT,
+            TemperatureUnit.CELSIUS);
+        assertTrue(celsius.equivalentTo(fahrenheit));
+    }
+
+    @Test
+    public void shouldCompareTwoDifferentTemperatureOfFahrenheitAndCelsiusAsNotEqual() {
+        final Quantity<TemperatureUnit> celsius = new Quantity<>(10, TemperatureUnit.CELSIUS,
+            TemperatureUnit.CELSIUS);
+        final Quantity<TemperatureUnit> fahrenheit = new Quantity<>(212, TemperatureUnit.FAHRENHEIT,
+            TemperatureUnit.CELSIUS);
+        assertFalse(celsius.equivalentTo(fahrenheit));
+    }
 }
