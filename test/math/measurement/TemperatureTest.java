@@ -1,5 +1,6 @@
 package math.measurement;
 
+import math.measurement.units.TemperatureUnit;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

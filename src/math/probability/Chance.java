@@ -1,27 +1,27 @@
 package math.probability;
 
 public class Chance {
-
+    
     private final double probability;
-
+    
     public Chance(double probability) {
         this.probability = probability;
     }
-
-    public Chance not() {
-        return new Chance(1 - this.probability);
-    }
-
-    public Chance and(Chance otherChance) {
-        return new Chance(this.probability * otherChance.probability);
-    }
-
+    
     public Chance or(Chance otherChance) {
         Chance complementOfChance = this.not();
         Chance complementOfOtherChance = otherChance.not();
         return complementOfChance.and(complementOfOtherChance).not();
     }
-
+    
+    public Chance not() {
+        return new Chance(1 - this.probability);
+    }
+    
+    public Chance and(Chance otherChance) {
+        return new Chance(this.probability * otherChance.probability);
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

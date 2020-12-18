@@ -1,5 +1,6 @@
 package math.measurement;
 
+import math.measurement.units.LengthUnit;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
